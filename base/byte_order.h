@@ -20,11 +20,11 @@ typedef enum BYTEORDER
 
 #ifdef OS_WIN
     #define HOST_IS_LITTLE_ENDIAN
-    #define HOST_BYTEORDER     LITTLE_ENDIAN   ///< 主机字节顺序
-    #define NETWORK_BYTEORDER  BIG_ENDIAN      ///< 网络字节顺序
+    #define HOST_BYTEORDER     LITTLE_ENDIAN   ///< host order
+    #define NETWORK_BYTEORDER  BIG_ENDIAN      ///< network order
 #elif defined(OS_LINUX)
-    #define HOST_BYTEORDER     BIG_ENDIAN      ///< 主机字节顺序
-    #define NETWORK_BYTEORDER  BIG_ENDIAN      ///< 网络字节顺序
+    #define HOST_BYTEORDER     BIG_ENDIAN      ///< host order
+    #define NETWORK_BYTEORDER  BIG_ENDIAN      ///< network order
 #endif
 
 /**
