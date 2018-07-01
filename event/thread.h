@@ -426,4 +426,5 @@ void*Thread::_threadproc(void* obj)
 
 }
 
+using namespace lite;
 #endif // ifndef _LITE_THREAD_H_
