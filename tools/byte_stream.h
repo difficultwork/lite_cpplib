@@ -10,6 +10,7 @@
 
 #include "base/lite_base.h"
 #include "base/byte_order.h"
+#include "base/exception.h"
 
 namespace lite {
 
