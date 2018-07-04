@@ -10,6 +10,7 @@
 #define _LITE_TIMER_H_
 
 #include "base/lite_base.h"
+#include "base/exception.h"
 #include "event/event.h"
 #include "event/mutex.h"
 #include "event/mutex_lock.h"
@@ -189,7 +190,7 @@ private:
                 }
                 else
                 {
-                    throw -1;
+                    throw invalid_param_exception();
                 }
                 event_done_.Signal();
             }
