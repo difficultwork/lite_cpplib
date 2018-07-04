@@ -10,6 +10,7 @@
 
 #include "base/lite_base.h"
 #include "base/noncopyable.h"
+#include "base/exception.h"
 
 #ifdef OS_WIN
 #include <windows.h>
@@ -56,7 +57,7 @@ Event::Event()
     event_handle_ = ::CreateEvent(NULL, true, false, NULL);
     if (event_handle_ == NULL)
     {
-        throw event_handle_;
+        throw runtime_exception("Create event failure");
     }
 }
 
@@ -129,7 +130,7 @@ void Event::Signal()
 {
     if (pthread_mutex_lock(&mutex_handle_) != 0)
     {
-        throw -1;
+        throw runtime_exception("Signal event failure");
     }
     event_state_ = true;
     (void)pthread_cond_broadcast(&cond_);
