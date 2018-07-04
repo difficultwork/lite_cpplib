@@ -131,7 +131,7 @@ uint32_t IOCP_TCPWorkThread::_Run()
     unsigned long           sock_id          = 0;
     LPOVERLAPPED            overlapped       = NULL;
     IOCP_IoContext*         io_data          = NULL;
-    while (!Signalled())
+    while (!_Signalled())
     {
         BOOL ret = GetQueuedCompletionStatus(iocp_handle_,
                                              &bytes_transfered,
