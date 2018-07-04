@@ -154,7 +154,7 @@ public:
     {
         if (data_ == NULL || read_size + read_idx_ > write_idx_)
         {
-            throw -1;         
+            throw access_violation_exception("byte stream overflow");         
         }
         memcpy(data, &data_[read_idx_], read_size);
         read_idx_ += read_size;
@@ -466,7 +466,7 @@ protected:
     { 
         if (str == NULL)
         {
-            throw -1;
+            throw null_ptr_exception();
         }
         return Add(str, (uint32_t)(strlen(str)+1)); 
     }
@@ -475,7 +475,7 @@ protected:
     { 
         if (str == NULL)
         {
-            throw -1;
+            throw null_ptr_exception();
         }
         return (*this) << (char*)str; 
     }
