@@ -10,6 +10,7 @@
 
 #include "base/lite_base.h"
 #include "base/noncopyable.h"
+#include "base/exception.h"
 #include "event.h"
 #include "tools/ilogger.h"
 
@@ -249,7 +250,7 @@ bool Thread::Start()
         if (thread_handle_ == NULL)
         {
             THREAD_LOG_ERROR("Create thread failure: %s (code=%u)", name_.c_str(), ::GetLastError());
-            throw thread_handle_;
+            throw runtime_exception("Create thread failure");
         }
     }
     THREAD_LOG_INFO("Start thread: %s (id=%u)", name_.c_str(), id_);
@@ -360,7 +361,7 @@ bool Thread::Start()
         if (ret != 0)
         {
             THREAD_LOG_ERROR("Create thread failure: %s (code=%u)", name_.c_str(), ret);
-            throw ret;
+            throw runtime_exception("Create thread failure");
         }
     }
     THREAD_LOG_INFO("Start thread: %s (id=%u)", name_.c_str(), id_);
