@@ -14,10 +14,10 @@
 
 namespace lite {
 
-class IOCP_UDPNode
+class IOCP_UDPPeer
 {
 public:
-    class IOCP_UDPNode()
+    class IOCP_UDPPeer()
         : iocp_handle_(NULL)
         , pool_io_context_(NULL)
         , pool_sock_context_(NULL)
@@ -125,7 +125,7 @@ private:
 };
 
 inline
-bool IOCP_UDPNode::Init(
+bool IOCP_UDPPeer::Init(
                         void*                     user_ptr,
                         RECEIVEFROMCALLBACK       ReceiveFromCallback)
 {
@@ -145,7 +145,7 @@ bool IOCP_UDPNode::Init(
 }
 
 inline
-bool IOCP_UDPNode::Start()
+bool IOCP_UDPPeer::Start()
 {
     if (is_start_)
     {
@@ -160,7 +160,7 @@ bool IOCP_UDPNode::Start()
 }
 
 inline
-bool IOCP_UDPNode::Create(unsigned long& sock_id, const char* bind_ip, UINT16& bind_port)
+bool IOCP_UDPPeer::Create(unsigned long& sock_id, const char* bind_ip, UINT16& bind_port)
 {
     if (!is_start_)
     {
@@ -223,7 +223,7 @@ bool IOCP_UDPNode::Create(unsigned long& sock_id, const char* bind_ip, UINT16& b
 }
 
 inline
-bool IOCP_UDPNode::SendTo(unsigned long sock_id, const char* data, int data_len, const char* dst_ip, UINT16 dst_port)
+bool IOCP_UDPPeer::SendTo(unsigned long sock_id, const char* data, int data_len, const char* dst_ip, UINT16 dst_port)
 {
     if (!is_start_)
     {
@@ -250,7 +250,7 @@ bool IOCP_UDPNode::SendTo(unsigned long sock_id, const char* data, int data_len,
 }
 
 inline
-bool IOCP_UDPNode::SendTo(unsigned long sock_id, const char* data, int data_len, SOCKADDR_IN& sock_addr)
+bool IOCP_UDPPeer::SendTo(unsigned long sock_id, const char* data, int data_len, SOCKADDR_IN& sock_addr)
 {
     if (!is_start_)
     {
@@ -274,7 +274,7 @@ bool IOCP_UDPNode::SendTo(unsigned long sock_id, const char* data, int data_len,
 }
 
 inline
-void IOCP_UDPNode::Stop()
+void IOCP_UDPPeer::Stop()
 {
     if (!is_start_)
     {
@@ -293,7 +293,7 @@ void IOCP_UDPNode::Stop()
 }
 
 inline
-void IOCP_UDPNode::DeInit()
+void IOCP_UDPPeer::DeInit()
 {
     for (list<IOCP_UDPWorkThread*>::iterator it = list_work_thread_.begin(); it != list_work_thread_.end(); it++)
     {
