@@ -2,7 +2,7 @@
  * @file    network\iocp_tcpclient.h
  * @brief   Encapsulation for IOCP TCP client
  * @author  Nik Yan
- * @version 1.0     2014-07-21
+ * @version 1.0     2014-07-21      Only support windows
  */
 
 #ifndef _LITE_IOCP_TCP_CLIENT_H_

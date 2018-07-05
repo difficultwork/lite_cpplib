@@ -367,7 +367,7 @@ bool IOCP_TCPWorkThread::_DoRecv(IOCP_SocketContextPtr sock_context)
                       sock_context->recv_context_.buf_,
                       sock_context->recv_context_.trans_len_,
                       user_ptr_);
-    // Delivery WSARecv request
+    // Delivery next WSARecv request
     return PostRecv(sock_context);
 }
 
