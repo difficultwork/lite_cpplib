@@ -168,6 +168,7 @@ bool Event::Wait(uint32_t timeout)
         struct timespec ts;
         if (clock_gettime(CLOCK_REALTIME, &ts) == -1)
         {
+            (void)pthread_mutex_unlock(&mutex_handle_);
             return false;
         }
         ts.tv_sec  += timeout / 1000;
