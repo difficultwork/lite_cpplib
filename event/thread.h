@@ -334,18 +334,21 @@ bool Thread::Start()
             ret = pthread_attr_init(&thread_attr);
             if (ret != 0)
             {
+                (void)pthread_attr_destroy(&thread_attr);
                 break;
             }
 
             ret = pthread_attr_setstacksize(&thread_attr, 20480);
             if (ret != 0)
             {
+                (void)pthread_attr_destroy(&thread_attr);
                 break;
             }
 
             ret = pthread_attr_setdetachstate(&thread_attr, PTHREAD_CREATE_JOINABLE);
             if (ret != 0)
             {
+                (void)pthread_attr_destroy(&thread_attr);
                 break;
             }
 
@@ -353,7 +356,7 @@ bool Thread::Start()
                                  &thread_attr,                      // the thread attr
                                  _threadproc,                       // the thread proc
                                  this);                             // current thread object as parameter
-            (void)pthread_attr_destroy(&thread_attr);
+            (void)pthread_attr_destroy(&thread_attr)
             id_ = static_cast<uint32_t>(thread_handle_);
         }
         while (0);
