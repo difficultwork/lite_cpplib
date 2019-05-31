@@ -2,7 +2,7 @@
 
 Lightweight c++ library
 
-Copyright (c) 2014, Nik Yan. All rights reserved.
+Copyright (c) 2014, difficultwork. All rights reserved.
 
 CrossPlatform：
 byte_stream
